@@ -80,6 +80,18 @@
                                     <action selector="defaultButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="F2Q-vF-NTV"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r4n-bU-UW8">
+                                <rect key="frame" x="339" y="222" width="35" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="gbS-QJ-8J2"/>
+                                    <constraint firstAttribute="width" constant="35" id="lDM-US-WL8"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="barcode.viewfinder" catalog="system"/>
+                                <connections>
+                                    <action selector="scanButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="YG3-Aa-AE2"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -99,11 +111,13 @@
                             <constraint firstItem="xao-HH-Bn7" firstAttribute="top" secondItem="ogp-i4-mtY" secondAttribute="bottom" constant="100" id="bgP-xl-y3I"/>
                             <constraint firstItem="FA5-0O-sL5" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="eaw-xe-nri"/>
                             <constraint firstItem="FA5-0O-sL5" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="fuH-pg-o2p"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="r4n-bU-UW8" secondAttribute="trailing" constant="16" id="gay-kh-42L"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="3as-zN-SmV" secondAttribute="trailing" constant="16" id="hpC-zf-NBu"/>
                             <constraint firstItem="FA5-0O-sL5" firstAttribute="centerX" secondItem="9m9-97-pXB" secondAttribute="centerX" id="msL-uq-0ai"/>
                             <constraint firstItem="xao-HH-Bn7" firstAttribute="leading" secondItem="Xf6-Uj-epq" secondAttribute="trailing" constant="8" symbolic="YES" id="og5-jW-KmO"/>
                             <constraint firstItem="FUd-98-hAV" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="p1S-n9-oHA"/>
                             <constraint firstItem="xao-HH-Bn7" firstAttribute="centerY" secondItem="Xf6-Uj-epq" secondAttribute="centerY" id="pGe-Tk-etm"/>
+                            <constraint firstItem="r4n-bU-UW8" firstAttribute="centerY" secondItem="TgA-r2-TXC" secondAttribute="centerY" id="t2R-YO-w6M"/>
                             <constraint firstItem="ogp-i4-mtY" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="ueS-UU-9Iv"/>
                             <constraint firstItem="Xf6-Uj-epq" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="vnu-QJ-deq"/>
                             <constraint firstItem="TgA-r2-TXC" firstAttribute="width" secondItem="xao-HH-Bn7" secondAttribute="width" id="yTY-L8-53F"/>
@@ -121,6 +135,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="barcode.viewfinder" catalog="system" width="128" height="115"/>
         <image name="house.fill" catalog="system" width="128" height="104"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
