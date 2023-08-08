@@ -16,6 +16,10 @@ extension String {
 
 class ViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+            return .portrait
+        }
+    
     @IBOutlet weak var urlField: UITextField!
     @IBOutlet weak var sidField: UITextField!
     @IBOutlet weak var resultLabel: UILabel!
@@ -26,6 +30,10 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         super.viewDidLoad()
     }
 
+    @IBAction func viewTapped(_ sender: Any) {
+        view.endEditing(true)
+    }
+    
     @IBAction func defaultButtonPressed(_ sender: Any) {
         // set url to default houstonradar
         urlField.text = "http://olddumbar.houston-radar.com/serialsid-lookup.php"
@@ -72,15 +80,39 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         }
     }
     
+    func libraryPicked() {
+        if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
+            imagePicker.delegate = self
+            imagePicker.sourceType = .photoLibrary
+            imagePicker.allowsEditing = false
+
+            present(imagePicker, animated: true, completion: nil)
+        }
+    }
+    
+    func openCamera() {
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            imagePicker.delegate = self
+            imagePicker.sourceType = .camera
+            imagePicker.allowsEditing = false
+            imagePicker.showsCameraControls = true
+            
+            present(imagePicker, animated: true, completion: nil)
+        } else {
+            print("camera unavailable on this device")
+        }
+        
+//        let imgPicker = UIImagePickerController()
+//        imgPicker.delegate = self
+//        imgPicker.sourceType = .camera
+//        imgPicker.allowsEditing = false
+//        imgPicker.showsCameraControls = true
+//        self.present(imgPicker, animated: true, completion: nil)
+    }
+    
     @IBAction func scanButtonPressed(_ sender: Any) {
         // leads to library picker
-        if UIImagePickerController.isSourceTypeAvailable(.photoLibrary){
-                    imagePicker.delegate = self
-                    imagePicker.sourceType = .photoLibrary
-                    imagePicker.allowsEditing = false
-
-                    present(imagePicker, animated: true, completion: nil)
-                }
+        openCamera()
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
@@ -89,7 +121,9 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
                 // user chose an image
                 barcodeImg = image
                 hexFromBarcode(img: image)
-                print("success")
+                print("Successful photo")
+            } else {
+                print("Error selecting image in picker")
             }
 
         }
